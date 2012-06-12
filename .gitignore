@@ -1,0 +1,13 @@
+.classpath
+.project
+.settings/
+amazon-sqs-grailsPlugins.iml
+amazon-sqs.iml
+amazon-sqs.ipr
+amazon-sqs.iws
+out/
+scripts/
+stacktrace.log
+target/
+web-app/
+aws-java-sdk-1.3.10-sources.jar
