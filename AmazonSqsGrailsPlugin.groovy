@@ -1,3 +1,6 @@
+import com.amazonaws.services.sqs.AmazonSQSClient
+import com.amazonaws.auth.BasicAWSCredentials
+
 class AmazonSqsGrailsPlugin {
     // the plugin version
     def version = "0.1"
@@ -25,7 +28,17 @@ Provides a simple service that allows all aspects of queue management and messag
 
     def doWithWebDescriptor = { xml -> }
 
-    def doWithSpring = { }
+    def doWithSpring = {
+        basicAWSCredentials(
+			BasicAWSCredentials, 
+			application.config.grails.plugins.amazon.sqs.accessKey, 
+			application.config.grails.plugins.amazon.sqs.secretKey
+		)
+
+        amazonSQS(AmazonSQSClient, basicAWSCredentials) {
+            endpoint = application.config.grails.plugins.amazon.sqs.region
+        }
+    }
 
     def doWithDynamicMethods = { ctx -> }
 
