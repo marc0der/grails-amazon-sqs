@@ -9,8 +9,6 @@ import com.amazonaws.services.sqs.model.DeleteQueueRequest
 import com.amazonaws.AmazonClientException
 import com.amazonaws.services.sqs.model.InvalidIdFormatException
 import com.amazonaws.services.sqs.model.ReceiptHandleIsInvalidException
-import org.gcontracts.annotations.Requires
-import org.gcontracts.annotations.Ensures
 
 class SqsService {
 
@@ -23,7 +21,6 @@ class SqsService {
 	 * @param queueName The name of the new queue.
 	 * @return The queue URL.
 	 */
-	@Requires({ queueName })
 	String createQueue(String queueName){
 		def request = new CreateQueueRequest(queueName)
 		def result = amazonSQS.createQueue(request)
@@ -35,7 +32,6 @@ class SqsService {
 	 * @param queueUrl The queue url to delete.
 	 * @return Success.
 	 */
-	@Requires({ queueUrl })
 	boolean deleteQueue(String queueUrl){
 		def request = new DeleteQueueRequest(queueUrl: queueUrl)
 		try{
@@ -63,7 +59,6 @@ class SqsService {
 	 * @param message The Message object containing queueUrl and messageBody.
 	 * @return The messageId.
 	 */
-	@Requires({ message.queueUrl && message.body })
 	String sendMessage(Message message){
 		def request = new SendMessageRequest(queueUrl: message.queueUrl, messageBody: message.body)
 		def result = amazonSQS.sendMessage(request)
@@ -75,7 +70,6 @@ class SqsService {
 	 * @param queueUrl The SQS queue URL.
 	 * @return The Message.
 	 */
-	@Requires({ queueUrl })
 	Message receiveMessage(String queueUrl) {
 		def result = receiveMessages(queueUrl, 1)
 		if(! result) {
@@ -91,7 +85,6 @@ class SqsService {
 	 * @param maxNumberOfMessages The message list size.
 	 * @return The Message List.
 	 */
-	@Requires({ queueUrl && maxNumberOfMessages > 0 })
 	List receiveMessages(String queueUrl, Integer maxNumberOfMessages) {
 		def messages = []
 
@@ -109,7 +102,6 @@ class SqsService {
 	 * @param receiptHandle The message receipt handle.
 	 * @return Success.
 	 */
-	@Requires({ queueUrl && receiptHandle })
 	boolean deleteMessage(String queueUrl, String receiptHandle) {
 		def request = new DeleteMessageRequest(queueUrl: queueUrl, receiptHandle: receiptHandle)
 		try {

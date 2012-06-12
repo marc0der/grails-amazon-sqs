@@ -25,7 +25,6 @@ grails.project.dependency.resolution = {
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-	    compile 'org.gcontracts:gcontracts-core:1.2.5'
 	    compile 'com.amazonaws:aws-java-sdk:1.3.10'
 	    test "org.spockframework:spock-grails-support:0.6-groovy-1.7"
     }
