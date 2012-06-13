@@ -22,20 +22,19 @@ Add the following lines of configuration to your Config.groovy:
 
 Where AMAZON_REGION can be one of:
 
-http://sqs.us-east-1.amazonaws.com       - The US East (Northern Virginia)
-http://sqs.us-west-2.amazonaws.com       - The US West (Oregon) end-point
-http://sqs.us-west-1.amazonaws.com       - The US West (Northern California)
-http://sqs.eu-west-1.amazonaws.com       - The EU(Ireland)
-http://sqs.ap-southeast-1.amazonaws.com  - The Asia Pacific (Singapore)
-http://sqs.ap-northeast-1.amazonaws.com  - The Asia Pacific (Tokyo)
-http://sqs.sa-east-1.amazonaws.com       - The South America (Sao Paulo)
+*  http://sqs.us-east-1.amazonaws.com       - The US East (Northern Virginia)
+*  http://sqs.us-west-2.amazonaws.com       - The US West (Oregon) end-point
+*  http://sqs.us-west-1.amazonaws.com       - The US West (Northern California)
+*  http://sqs.eu-west-1.amazonaws.com       - The EU(Ireland)
+*  http://sqs.ap-southeast-1.amazonaws.com  - The Asia Pacific (Singapore)
+*  http://sqs.ap-northeast-1.amazonaws.com  - The Asia Pacific (Tokyo)
+*  http://sqs.sa-east-1.amazonaws.com       - The South America (Sao Paulo)
 
 ## The SQS Service
 
 Simply add the following field to your Controller or Service:
 
     class MyController {
-
         def sqsService	
         
         def index = {}
@@ -65,10 +64,10 @@ All these methods are self explanetory and are used within the context of the Am
 
 Messages that are stored in Amazon SQS have a lifecycle that is easy to manage but ensures that all messages are processed.
 
-1. A system that needs to send a message will find an Amazon SQS queue, and use ```sendMessage()``` to add a new message to it.
-2. A different system that processes messages needs more messages to process, so it calls ```receiveMessage()```, and this message is returned.
-3. Once a message has been returned by ```receiveMessage()```, it will not be returned by any other ```receiveMessage()``` until the visibility timeout has passed. This keeps multiple computers from processing the same message at once.
-4. If the system that processes messages successfully finishes working with this message, it calls ```deleteMessage()```, which removes the message from the queue so no one else will ever process it. If this system fails to process the message, then it will be read by another ```receiveMessage()``` call as soon as the visibility timeout passes.
+1.  A system that needs to send a message will find an Amazon SQS queue, and use ```sendMessage()``` to add a new message to it.
+2.  A different system that processes messages needs more messages to process, so it calls ```receiveMessage()```, and this message is returned.
+3.  Once a message has been returned by ```receiveMessage()```, it will not be returned by any other ```receiveMessage()``` until the visibility timeout has passed. This keeps multiple computers from processing the same message at once.
+4.  If the system that processes messages successfully finishes working with this message, it calls ```deleteMessage()```, which removes the message from the queue so no one else will ever process it. If this system fails to process the message, then it will be read by another ```receiveMessage()``` call as soon as the visibility timeout passes.
 
 ## Source Code
 
@@ -80,18 +79,7 @@ This is available on GitHub at:
 
 This is only the first iteration of the plugin, and only supports the use of an auto-wired service for now. In the future we will be adding the future:
 
-1. All other methods exposed by the SQS API: 
-
-SendMessageBatch
-ChangeMessageVisibility
-ChangeMessageVisibilityBatch
-DeleteMessageBatch
-SetQueueAttributes
-GetQueueAttributes
-GetQueueUrl
-AddPermission
-RemovePermission
-
-2. An easy to use DSL that will be available within Controllers and Services for performing various queue related actions.
-
-3. More comprehensive configuration options.
+1.  All other methods exposed by the SQS API: 
+SendMessageBatch, ChangeMessageVisibility, ChangeMessageVisibilityBatch, DeleteMessageBatch, SetQueueAttributes, GetQueueAttributes, GetQueueUrl, AddPermission, RemovePermission
+2.  An easy to use DSL that will be available within Controllers and Services for performing various queue related actions.
+3.  More comprehensive configuration options.
