@@ -20,7 +20,7 @@ class AmazonSqsGrailsPlugin {
     def authorEmail = "vermeulen.mp@gmail.com"
     def title = "Amazon SQS"
     def description = '''\\
-Provides a simple service that allows all aspects of queue management and message brokering.
+An Amazon SQS integration plugin that provides functionality allowing queue management and message brokering.
 '''
 
     // URL to the plugin's documentation
