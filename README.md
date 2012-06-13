@@ -60,7 +60,9 @@ The ```receiveMessage()``` method returns an instance of ```org.grails.plugins.a
     }
 
 
-All these methods are self explanetory and are used within the context of the Amazon SQS lifecycle:
+All these methods are self explanetory and are used within the context of the Amazon SQS lifecycle, which is explained next.
+
+## Message Lifecycle
 
 Messages that are stored in Amazon SQS have a lifecycle that is easy to manage but ensures that all messages are processed.
 
@@ -73,7 +75,7 @@ Messages that are stored in Amazon SQS have a lifecycle that is easy to manage b
 
 This is available on GitHub at:
 
-    http://github.com/marcoVermeulen/grails-amazon-sqs
+http://github.com/marcoVermeulen/grails-amazon-sqs
 
 ## In the Pipeline
 
