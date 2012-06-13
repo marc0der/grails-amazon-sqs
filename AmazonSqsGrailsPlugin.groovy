@@ -3,7 +3,7 @@ import com.amazonaws.auth.BasicAWSCredentials
 
 class AmazonSqsGrailsPlugin {
     // the plugin version
-    def version = "0.1"
+    def version = "1.0-SNAPSHOT"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "1.3.7 > *"
     // the other plugins this plugin depends on
@@ -15,6 +15,8 @@ class AmazonSqsGrailsPlugin {
 		    "test",
 		    "scripts"
     ]
+
+	def packaging = "binary"
 
     def author = "Marco Vermeulen, Frederic Occedat"
     def authorEmail = "vermeulen.mp@gmail.com"
